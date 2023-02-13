@@ -101,15 +101,15 @@ public class Main {
                 inp[1] = (choi-1)%size;
             }
         }
-        void check1(boolean ch,int choi,int[] inp,String a,String str)
+        void check1(boolean ch,int cho,int[] inp,String a,String str)
         {
             Scanner sc=new Scanner(System.in);
             while(!ch)
             {
                 l.log(Level.INFO,()->str);
-                choi=sc.nextInt();
-                inp[0]= (choi-1)/size;
-                inp[1] = (choi-1)%size;
+                cho=sc.nextInt();
+                inp[0]= (cho-1)/size;
+                inp[1] = (cho-1)%size;
                 ch=set(inp[0],inp[1],a);
             }
         }
