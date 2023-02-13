@@ -17,18 +17,21 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         size = sc.nextInt();
         game p1 = new game(size);
+        String str1="Enter the position-Player 1 (1 to "+size*size+")";
+        String str2="Enter the position-Player 2 (1 to "+size*size+")";
+        String drw="The match is DRAW";
         l.log(Level.INFO,()->"Initially the Matrix is");
         p1.display();
         while(true)
         {
-            l.log(Level.INFO,()->"Enter the position-Player 1 (1 to "+size*size+")");
+            l.log(Level.INFO,()->str1);
             choice=sc.nextInt();
             x = (choice-1)/size;
             y = (choice-1)%size;
             while(choice<1 || choice>size*size)
             {
                 l.log(Level.INFO,()->"Invalid position");
-                l.log(Level.INFO,()->"Enter the position-Player 1 (1 to "+size*size+")");
+                l.log(Level.INFO,()->str1);
                 choice=sc.nextInt();
                 x = (choice-1)/size;
                 y = (choice-1)%size;
@@ -36,7 +39,7 @@ public class Main {
             ch=p1.set(x,y,sym[0]);
             while(!ch)
             {
-                l.log(Level.INFO,()->"Enter the position-Player 1 (1 to "+size*size+")");
+                l.log(Level.INFO,()->str1);
                 choice=sc.nextInt();
                 x = (choice-1)/size;
                 y = (choice-1)%size;
@@ -52,18 +55,18 @@ public class Main {
             }
             if(cnt==size*size)
             {
-                l.log(Level.INFO,()->"The match is DRAW");
+                l.log(Level.INFO,()->drw);
                 break;
 
             }
-            l.log(Level.INFO,()->"Enter the position-Player 2 (1 to "+size*size+")");
+            l.log(Level.INFO,()->str2);
             choice=sc.nextInt();
             x = (choice-1)/size;
             y = (choice-1)%size;
             while(choice<1 || choice>size*size)
             {
                 l.log(Level.INFO,()->"Invalid position");
-                l.log(Level.INFO,()->"Enter the position-Player 2 (1 to "+size*size+")");
+                l.log(Level.INFO,()->str2);
                 choice=sc.nextInt();
                 x = (choice-1)/size;
                 y = (choice-1)%size;
@@ -72,7 +75,7 @@ public class Main {
             ch= p1.set(x,y,sym[1]);
             while(!ch)
             {
-                l.log(Level.INFO,()->"Enter the position-Player 2 (1 to "+size*size+")");
+                l.log(Level.INFO,()->str2);
                 choice=sc.nextInt();
                 x = (choice-1)/size;
                 y = (choice-1)%size;
@@ -82,7 +85,7 @@ public class Main {
             p1.display();
             cnt++;
             if(p1.checkHori(x,sym[1]) || p1.checkVerti(y,sym[1])|| p1.checkDiagonal(sym[1]) || p1.checkDiagonal1(sym[1])) {
-                l.log(Level.INFO,()->"Player 2 is winner");
+                l.log(Level.INFO,()->drw);
             break;
             }
             if(cnt==size*size)
@@ -185,7 +188,7 @@ public class Main {
             for(int i=0;i<size;i++)
             {
                 for(int j=0;j<size;j++) {
-                    l.info(mat[i][j] + " ");
+                    l.info(mat[i][j]);
                 }
             }
         }
