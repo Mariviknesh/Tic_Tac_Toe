@@ -39,12 +39,12 @@ public class Main {
             if(p1.checkHori(x,sym[0]) || p1.checkVerti(y,sym[0]) || p1.checkDiagonal(sym[0]) || p1.checkDiagonal1(sym[0]))
             {
                 l.log(Level.INFO,()->"Player 1 is winner");
-                break;
+                System.exit(0);
             }
             if(cnt==size*size)
             {
                 l.log(Level.INFO,()->drw);
-                break;
+                System.exit(0);
 
             }
             l.log(Level.INFO,()->str2);
@@ -60,12 +60,14 @@ public class Main {
             cnt++;
             if(p1.checkHori(x,sym[1]) || p1.checkVerti(y,sym[1])|| p1.checkDiagonal(sym[1]) || p1.checkDiagonal1(sym[1])) {
                 l.log(Level.INFO,()->drw);
-            break;
+                System.exit(0);
+
             }
             if(cnt==size*size)
             {
                 l.log(Level.INFO,()->"The match is DRAW");
-                break;
+                System.exit(0);
+
 
             }
         }
@@ -89,6 +91,7 @@ public class Main {
                 }
             }
         }
+
         void check(int choi,int[] inp,String str)
         {
             Scanner sc=new Scanner(System.in);
