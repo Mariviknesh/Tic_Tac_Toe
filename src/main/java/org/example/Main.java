@@ -20,6 +20,7 @@ public class Main {
         String str1="Enter the position-Player 1 (1 to "+size*size+")";
         String str2="Enter the position-Player 2 (1 to "+size*size+")";
         String drw="The match is DRAW";
+        int []inp=new int[2];
         l.log(Level.INFO,()->"Initially the Matrix is");
         p1.display();
         while(true)
@@ -28,15 +29,8 @@ public class Main {
             choice=sc.nextInt();
             x = (choice-1)/size;
             y = (choice-1)%size;
-            while(choice<1 || choice>size*size)
-            {
-                l.log(Level.INFO,()->"Invalid position");
-                l.log(Level.INFO,()->str1);
-                choice=sc.nextInt();
-                x = (choice-1)/size;
-                y = (choice-1)%size;
-            }
-            ch=p1.set(x,y,sym[0]);
+            p1.check(choice,inp);
+            ch=p1.set(inp[0],inp[1],sym[0]);
             while(!ch)
             {
                 l.log(Level.INFO,()->str1);
@@ -63,16 +57,8 @@ public class Main {
             choice=sc.nextInt();
             x = (choice-1)/size;
             y = (choice-1)%size;
-            while(choice<1 || choice>size*size)
-            {
-                l.log(Level.INFO,()->"Invalid position");
-                l.log(Level.INFO,()->str2);
-                choice=sc.nextInt();
-                x = (choice-1)/size;
-                y = (choice-1)%size;
-
-            }
-            ch= p1.set(x,y,sym[1]);
+            p1.check(choice,inp);
+            ch=p1.set(inp[0],inp[1],sym[1]);
             while(!ch)
             {
                 l.log(Level.INFO,()->str2);
@@ -113,6 +99,18 @@ public class Main {
                 for(int j=0;j<n;j++) {
                     mat[i][j] = "-";
                 }
+            }
+        }
+        void check(int choi,int[] inp)
+        {
+            Scanner sc=new Scanner(System.in);
+            while(choi<1 || choi>size*size)
+            {
+                l.log(Level.INFO,()->"Invalid position");
+                l.log(Level.INFO,()->"Enter the position-Player 1 (1 to "+size*size+")");
+                choi=sc.nextInt();
+                inp[0] = (choi-1)/size;
+                inp[1] = (choi-1)%size;
             }
         }
         boolean set(int a,int b,String c)
