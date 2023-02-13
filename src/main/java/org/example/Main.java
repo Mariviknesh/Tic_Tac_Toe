@@ -32,7 +32,7 @@ public class Main {
             p1.check(choice,inp,str1);
             ch=p1.set(inp[0],inp[1],sym[0]);
 
-            p1.check1(ch,choice,inp,sym[0],str1);
+            p1.check1(ch,inp,sym[0],str1);
             l.log(Level.INFO,()->"Matrix is");
             p1.display();
             cnt++;
@@ -53,7 +53,7 @@ public class Main {
             y = (choice-1)%size;
             p1.check(choice,inp,str2);
             ch=p1.set(inp[0],inp[1],sym[1]);
-            p1.check1(ch,choice,inp,sym[1],str2);
+            p1.check1(ch,inp,sym[1],str2);
 
             l.log(Level.INFO,()->"Matrix is");
             p1.display();
@@ -101,8 +101,8 @@ public class Main {
                 inp[1] = (choi-1)%size;
             }
         }
-        void check1(boolean ch,int cho,int[] inp,String a,String str)
-        {
+        void check1(boolean ch,int[] inp,String a,String str)
+        { int cho;
             Scanner sc=new Scanner(System.in);
             while(!ch)
             {
