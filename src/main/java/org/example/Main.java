@@ -16,7 +16,7 @@ public class Main {
         l.log(Level.INFO,()->"Enter the size of matrix");
         Scanner sc = new Scanner(System.in);
         size = sc.nextInt();
-        game p1 = new game(size);
+        Game p1 = new Game(size);
         String str1="Enter the position-Player 1 (1 to "+size*size+")";
         String str2="Enter the position-Player 2 (1 to "+size*size+")";
         String drw="The match is DRAW";
@@ -98,13 +98,13 @@ public class Main {
 
     }
 }
-    class game
+    class Game
     {
         Logger l=Logger.getLogger("com.api.jar");
         int size;
         String [][]mat;
 
-        game(int n)
+        Game(int n)
         {
             size=n;
             mat=new String[n][n];
