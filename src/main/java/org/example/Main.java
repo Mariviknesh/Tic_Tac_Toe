@@ -29,16 +29,10 @@ public class Main {
             choice=sc.nextInt();
             x = (choice-1)/size;
             y = (choice-1)%size;
-            p1.check(choice,inp);
+            p1.check(choice,inp,str1);
             ch=p1.set(inp[0],inp[1],sym[0]);
-            while(!ch)
-            {
-                l.log(Level.INFO,()->str1);
-                choice=sc.nextInt();
-                x = (choice-1)/size;
-                y = (choice-1)%size;
-                ch=p1.set(x,y,sym[0]);
-            }
+
+            p1.check1(ch,choice,inp,sym[0],str1);
             l.log(Level.INFO,()->"Matrix is");
             p1.display();
             cnt++;
@@ -57,16 +51,10 @@ public class Main {
             choice=sc.nextInt();
             x = (choice-1)/size;
             y = (choice-1)%size;
-            p1.check(choice,inp);
+            p1.check(choice,inp,str2);
             ch=p1.set(inp[0],inp[1],sym[1]);
-            while(!ch)
-            {
-                l.log(Level.INFO,()->str2);
-                choice=sc.nextInt();
-                x = (choice-1)/size;
-                y = (choice-1)%size;
-                ch= p1.set(x,y,sym[1]);
-            }
+            p1.check1(ch,choice,inp,sym[1],str2);
+
             l.log(Level.INFO,()->"Matrix is");
             p1.display();
             cnt++;
@@ -101,16 +89,28 @@ public class Main {
                 }
             }
         }
-        void check(int choi,int[] inp)
+        void check(int choi,int[] inp,String str)
         {
             Scanner sc=new Scanner(System.in);
             while(choi<1 || choi>size*size)
             {
                 l.log(Level.INFO,()->"Invalid position");
-                l.log(Level.INFO,()->"Enter the position-Player 1 (1 to "+size*size+")");
+                l.log(Level.INFO,()->str);
                 choi=sc.nextInt();
                 inp[0] = (choi-1)/size;
                 inp[1] = (choi-1)%size;
+            }
+        }
+        void check1(boolean ch,int choi,int[] inp,String a,String str)
+        {
+            Scanner sc=new Scanner(System.in);
+            while(!ch)
+            {
+                l.log(Level.INFO,()->str);
+                choi=sc.nextInt();
+                inp[0]= (choi-1)/size;
+                inp[1] = (choi-1)%size;
+                ch=set(inp[0],inp[1],a);
             }
         }
         boolean set(int a,int b,String c)
